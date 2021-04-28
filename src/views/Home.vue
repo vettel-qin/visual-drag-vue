@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Toolbar />
     <main>
       <!-- 左侧组件列表 -->
       <section class="left">
@@ -23,15 +24,17 @@
 
 <script>
 import { v4 as uuidv4 } from 'uuid'
+import { mapState } from 'vuex'
 import ComponentList from '@/components/ComponentList.vue'
 import componentList from '@/custom-component/component-list' // 左侧列表数据
 import { deepCopy } from '@/utils/utils'
 import Editor from '@/components/Editor/index'
 import AttrList from '@/components/AttrList'
-import { mapState } from 'vuex'
+import Toolbar from '@/components/Toolbar'
+
 export default {
   name: 'Home',
-  components: { ComponentList, Editor, AttrList },
+  components: { ComponentList, Editor, AttrList, Toolbar },
 
   computed: mapState([
     'curComponent'
