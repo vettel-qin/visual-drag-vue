@@ -50,8 +50,7 @@ export default {
       component.style.left = e.offsetX
       component.id = uuidv4()
       this.$store.commit('addComponent', { component })
-
-      console.log(this.$store.state.componentData)
+      this.$store.commit('recordSnapshot')
     },
 
     handleDragOver (e) {

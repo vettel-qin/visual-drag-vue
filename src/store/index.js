@@ -2,11 +2,13 @@ import { createStore } from 'vuex'
 import { $ } from '@/utils/utils'
 import layer from './layer'
 import contextmenu from './contextmenu'
+import snapshot from './snapshot'
 
 export default createStore({
   state: {
     ...layer.state,
     ...contextmenu.state,
+    ...snapshot.state,
     componentData: [], // 画布组件数据
     curComponent: null,
     curComponentIndex: null
@@ -14,6 +16,7 @@ export default createStore({
   mutations: {
     ...layer.mutations,
     ...contextmenu.mutations,
+    ...snapshot.mutations,
 
     getEditor (state) {
       state.editor = $('#editor')
@@ -54,6 +57,11 @@ export default createStore({
       }
 
       state.componentData.splice(index, 1)
+    },
+
+    setComponentData (state, componentData = []) {
+      console.log(state)
+      // Vue.set(state, 'componentData', componentData)
     }
   },
   actions: {

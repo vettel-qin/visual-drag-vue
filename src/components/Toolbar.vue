@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="toolbar">
+    <el-button @click="undo">撤消</el-button>
     <el-button style="margin-left: 10px" @click="preview">预览</el-button>
   </div>
   <!-- 预览 -->
-  <p>{{isShowPreview}}</p>
   <Preview :modelValue = "isShowPreview" @update:modelValue="isShowPreview = $event"></Preview>
 </div>
 </template>
@@ -21,8 +21,11 @@ export default {
   components: { Preview },
 
   methods: {
+    // 撤消
+    undo () {
+      this.$store.commit('undo')
+    },
     preview () {
-      console.log(1111)
       this.isShowPreview = true
     }
   }
